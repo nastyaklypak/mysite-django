@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -7,13 +8,24 @@ class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Категорія'
+    # ДОДАТИ: Менеджер об'єктів
+    objects = models.Manager() 
+                                    
+    class Meta: 
+        # ...
         verbose_name_plural = 'Категорії'
     
     def __str__(self):
         return self.name
+        
+    # ДОДАТИ: Метод для отримання URL
+    def get_absolute_url(self):
+        try:
+            url = reverse('articles-category-list',
+                          kwargs={'slug': self.slug})
+        except:
+            url = "/"
+        return url
 
 # Модель для Статті
 class Article(models.Model):
