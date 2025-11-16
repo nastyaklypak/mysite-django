@@ -1,0 +1,23 @@
+body {
+    background: url('/static/img/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.article-text p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+h2, h3 {
+    font-family: "Arial", sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
